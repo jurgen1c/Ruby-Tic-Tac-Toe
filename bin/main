@@ -1,3 +1,43 @@
 #!/usr/bin/env ruby
 
-print 'Hello world!'
+puts 'Welcome to Ruby Tic-Tac-Toe'
+
+# welcome to first player
+puts "Welcome Player 1, please type x or o to choose side"
+player1 = gets.chomp
+
+player2 = player1 =="x"? "o" : "x"
+puts "Player 1 is #{player1} and Player 2 is #{player2}"
+puts
+
+count_round = 1
+win = false
+turn = rand(0..1)
+
+board = [
+  [" "," "," "],
+  [" "," "," "],
+  [" "," "," "]
+]
+
+line = { "a"=> 1, "b"=> 2, "c"=> 3 }
+
+while (count_round <= 9 && !win)
+  puts "Player #{turn + 1} turn, please choose your coordinates"
+  coord = gets.chomp
+  x = line[coord[0] ] - 1
+  y = coord[1].to_i - 1
+  board[x][y] = turn == 0? player1 : player2
+  turn = 1 - turn
+  count_round += 1
+  puts "\n"
+  print board[0]
+  puts 
+  print board[1]
+  puts
+  print board[2]
+  puts
+end
+
+puts "Game Over!"
+
