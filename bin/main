@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+puts 'Hello world!'
+
+# welcome to first player
+puts "Welcome player 1, please type x or o to chose side"
+player1 = gets.chomp
+
+player2 = player1 =="x"? "o" : "x"
+puts "Player 1 is #{player1} and player 2 is #{player2}"
+
+count_round = 0
+win = false
+turn = rand(0..1)
+
+board = [
+  ["","",""],
+  ["","",""],
+  ["","",""]
+]
+
+line = { "a"=> 1, "b"=> 2, "c"=> 3 }
+puts line["a"]
+puts line["b"]
+
+while (count_round<9 && !win)
+  if turn == 0
+    puts "zlatan ibrahimovic #{player1}"
+  else
+    puts "keylor navas #{player2}"
+  end
+  puts "please chose you coordinations"
+  coord = gets.chomp
+  x = line[ coord[0] ] - 1
+  y = coord[1].to_i - 1
+  print "x== #{x} and y == #{y}"
+  turn = 1- turn
+  count_round += 1
+  puts "\n"
+end
