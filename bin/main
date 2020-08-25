@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 
-print "Hello world!"
+print 'Hello world!'
