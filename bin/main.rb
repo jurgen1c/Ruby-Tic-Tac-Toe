@@ -42,6 +42,19 @@ def wincheck(board, lin, col)
   false
 end
 
+def check_coord(board, lin, col)
+  line = { "a"=> 1, "b"=> 2, "c"=> 3 }
+  # check if lin is a or b or c
+  return false unless lin == "a" || lin == "b" || lin == "c"
+  # check if col is 1 or 2 or 3
+  return false unless col == "1" || col == "2" || col == "3"
+  # if lin and lin are valid check if the field is occupied
+  x = line[lin] - 1
+  y = col.to_i - 1
+  return false unless board[x][y] == " "
+  true
+end
+
 puts "\n    1    2    3"
 print "a #{board[0]}"
 puts
@@ -53,7 +66,13 @@ puts
 while count_round <= 9 && !win
   # table displayed above shows player available moves
   puts "#{player_names[turn]}'s turn, please choose from valid table coordinates shown above"
-  coord = gets.chomp # if valid (validation will be added to board class in later milestone)
+  coord = gets.chomp
+  valid = check_coord(board, coord[0], coord[1])
+  while !valid
+    puts "Your coordinates are invalid, please choose a valid coordinate"
+    coord = gets.chomp
+    valid = check_coord(board, coord[0], coord[1])
+  end
   x = line[coord[0]] - 1
   y = coord[1].to_i - 1
   board[x][y] = turn.zero? ? player1 : player2
