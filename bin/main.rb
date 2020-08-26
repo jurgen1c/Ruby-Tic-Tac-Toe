@@ -1,3 +1,30 @@
 #!/usr/bin/env ruby
+require "board"
+load "player.rb"
 
-print 'Hello world!'
+puts 'Welcome to Ruby Tic-Tac-Toe'
+
+# welcome to first player
+puts "Welcome Player 1 please input your name"
+player1 = Player.new(gets.chomp)
+puts "Please type x or o to choose side"
+player1.icon = gets.chomp
+
+puts "welcome player 2 please input your name"
+player2 = Player.new(gets.chomp)
+
+player2.icon = player1.icon =="x"? "o" : "x"
+puts "Player 1 is #{player1.name} #{player1.icon} and Player 2 is #{player2.name} #{player2.icon}"
+puts
+
+count_round = 1
+win = false
+turn = rand(0..1)
+
+board = Board.new
+
+line = { "a"=> 1, "b"=> 2, "c"=> 3 }
+
+board.game_logic
+
+puts "Game Over!"
