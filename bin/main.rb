@@ -5,13 +5,24 @@ require './lib/player.rb'
 puts 'Welcome to Ruby Tic-Tac-Toe'
 
 puts "Welcome Player 1 please input your name"
+name = gets.chomp
+while name.empty?
+  puts 'Please type in a valid name'
+  name = gets.chomp
+end
 
-player1 = Player.new(gets.chomp)
+player1 = Player.new(name)
 puts "Please type x or o to choose side"
 player1.icon = gets.chomp
 
 puts "welcome player 2 please input your name"
-player2 = Player.new(gets.chomp)
+name = gets.chomp
+while name.empty?
+  puts 'Please type in a valid name'
+  name = gets.chomp
+end
+player2 = Player.new(name)
+
 
 player2.icon = player1.icon =="x"? "o" : "x"
 puts "\nPlayer 1 is #{player1.name} #{player1.icon} and Player 2 is #{player2.name} #{player2.icon}"
