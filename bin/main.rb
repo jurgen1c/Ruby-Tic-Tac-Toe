@@ -15,7 +15,7 @@ puts "welcome player 2 please input your name"
 player2 = Player.new(gets.chomp)
 
 player2.icon = player1.icon =="x"? "o" : "x"
-puts "Player 1 is #{player1.name} #{player1.icon} and Player 2 is #{player2.name} #{player2.icon}"
+puts "\nPlayer 1 is #{player1.name} #{player1.icon} and Player 2 is #{player2.name} #{player2.icon}"
 puts
 
 count_round = 1
@@ -24,7 +24,7 @@ turn = rand(0..1)
 
 board = Board.new(player1 , player2)
 
-puts "#{board.player1}  #{board.player2}"
+puts "#{board.player1.name}  #{board.player2.name}"
 
 #board.game_logic
 
