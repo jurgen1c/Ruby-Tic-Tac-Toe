@@ -5,8 +5,13 @@
 puts 'Welcome to Ruby Tic-Tac-Toe'
 
 # welcome to first player
-puts 'Welcome Player 1 please input x or o to choose your icon'
+puts 'Welcome player 1 please intro your name below'
+player1_name = gets.chomp
+puts 'Please input x or o to choose your icon'
 player1 = gets.chomp
+
+puts 'Welcome player 2 please intro your name below'
+player2_name = gets.chomp
 
 player2 = player1 == 'x' ? 'o' : 'x'
 board = [
@@ -16,13 +21,6 @@ board = [
 ]
 
 puts "Player 1 is #{player1} and Player 2 is #{player2}"
-puts
-puts "\n    1    2    3"
-print "a #{board[0]}"
-puts
-print "b #{board[1]}"
-puts
-print "c #{board[2]}"
 puts
 
 count_round = 1
@@ -44,13 +42,22 @@ def wincheck(board, lin, col)
   false
 end
 
+puts "\n    1    2    3"
+print "a #{board[0]}"
+puts
+print "b #{board[1]}"
+puts
+print "c #{board[2]}"
+puts
+
 while count_round <= 9 && !win
-  puts "Player #{turn + 1} turn, please choose your coordinates"
-  coord = gets.chomp
+  puts "Player #{turn + 1} turn, please choose from valid table coordinates shown above" # table displayed above shows player available moves
+  coord = gets.chomp #if valid (validation will be added to board class in later milestone)
   x = line[coord[0]] - 1
   y = coord[1].to_i - 1
   board[x][y] = turn.zero? ? player1 : player2
   win = wincheck(board, x, y)
+  break if win
   turn = 1 - turn
   count_round += 1
   puts "\n    1    2    3"
@@ -62,7 +69,12 @@ while count_round <= 9 && !win
   puts
 end
 
-puts 'Game Over!'
+if win
+  puts "Congratulations player #{turn + 1}"
+else
+  puts 'This round is a draw'
+end
+puts 'Game Over!' # An if statement will be added to check which player is the winner
 
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/CyclomaticComplexity
