@@ -45,10 +45,10 @@ end
 def check_coord(board, lin, col)
   line = { 'a' => 1, 'b' => 2, 'c' => 3 }
   # check if lin is a or b or c
-  return false unless ['a', 'b', 'c'].include?(lin)
+  return false unless %w[a b c].include?(lin)
 
   # check if col is 1 or 2 or 3
-  return false unless ['1', '2', '3'].include?(col)
+  return false unless %w[1 2 3].include?(col)
 
   # if lin and lin are valid check if the field is occupied
   x = line[lin] - 1
