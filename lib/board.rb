@@ -36,4 +36,12 @@ class Board
     return false unless @board[x][y] == " "
     true
   end
+
+  def restart
+    @board = [
+      [" "," "," "],
+      [" "," "," "],
+      [" "," "," "]
+    ]
+  end
 end
