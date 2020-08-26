@@ -5,5 +5,8 @@ class Player
         @name = name
         @icon = icon
     end
-    
+
+    def name_check(@name)
+        return !@name.empty?
+    end
 end
