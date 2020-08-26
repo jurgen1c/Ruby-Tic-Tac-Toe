@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/CyclomaticComplexity
 
 puts 'Welcome to Ruby Tic-Tac-Toe'
@@ -64,3 +63,6 @@ while count_round <= 9 && !win
 end
 
 puts 'Game Over!'
+
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
