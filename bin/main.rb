@@ -52,7 +52,7 @@ puts
 
 while count_round <= 9 && !win
   # table displayed above shows player available moves
-  puts "#{player_names[turn]}'s turn, please choose from valid table coordinates shown above" 
+  puts "#{player_names[turn]}'s turn, please choose from valid table coordinates shown above"
   coord = gets.chomp # if valid (validation will be added to board class in later milestone)
   x = line[coord[0]] - 1
   y = coord[1].to_i - 1
