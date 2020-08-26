@@ -42,8 +42,12 @@ def wincheck(board, lin, col)
   false
 end
 
-def check_coord(board, lin, col)
+def check_coord(board, coord)
   line = { 'a' => 1, 'b' => 2, 'c' => 3 }
+  return false unless coord.size == 2
+
+  lin = coord[0]
+  col = coord[1]
   # check if lin is a or b or c
   return false unless %w[a b c].include?(lin)
 
@@ -70,11 +74,11 @@ while count_round <= 9 && !win
   # table displayed above shows player available moves
   puts "#{player_names[turn]}'s turn, please choose from valid table coordinates shown above"
   coord = gets.chomp
-  valid = check_coord(board, coord[0], coord[1])
+  valid = check_coord(board, coord)
   until valid
     puts 'Your coordinates are invalid, please choose a valid coordinate'
     coord = gets.chomp
-    valid = check_coord(board, coord[0], coord[1])
+    valid = check_coord(board, coord)
   end
   x = line[coord[0]] - 1
   y = coord[1].to_i - 1
