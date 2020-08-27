@@ -3,7 +3,7 @@
 
 class Board
   attr_accessor :player1, :player2, :board
-  def initialize(player1 , player2)
+  def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
     @board = [
@@ -43,6 +43,7 @@ class Board
     x = line[lin] - 1
     y = col.to_i - 1
     return false unless @board[x][y] == ' '
+
     true
   end
 

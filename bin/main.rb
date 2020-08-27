@@ -16,7 +16,7 @@ player1 = Player.new(name)
 puts 'Please type x or o to choose side'
 
 icon = gets.chomp
-until %w(x o).include?(icon)
+until %w[x o].include?(icon)
   puts 'Please type in a valid icon'
   icon = gets.chomp
 end
