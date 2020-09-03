@@ -51,5 +51,15 @@ describe Board do
       board.instance_variable_set('@board', [%w[x o x], %w[o o x], %w[x o o]])
       expect(board.wincheck(1, col.to_i)).to eql(true)
     end
+
+    it 'returns true if icons match in a line' do
+      board.instance_variable_set('@board', [%w[o o x], %w[x o x], %w[x x o]])
+      expect(board.wincheck(1, col.to_i)).to eql(true)
+    end
+
+    it 'returns true if icons match in a line' do
+      board.instance_variable_set('@board', [%w[o o o], %w[x o x], %w[x o x]])
+      expect(board.wincheck(1, col.to_i)).to eql(true)
+    end
   end
 end
