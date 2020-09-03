@@ -9,9 +9,15 @@ describe Board do
   let(:col) { '1' }
   let(:w_lin) { 'z' }
   let(:w_col) { '9' }
+  let(:board_matrix) {[
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+  ]}
 
   describe '#wincheck' do
     it 'returns if the player has completed a line' do
+      
       expect(board.wincheck(1, col)).to eql(true)
     end
   end
@@ -28,7 +34,13 @@ describe Board do
 
   describe '#restart' do
     it 'returns an empty board' do
-      expect(board.restart).to include(board)
+      expect(board.restart).to eql(board_matrix)
     end
   end
+
+  describe 'initialize' do
+    it 'returns @players and @board' do
+      expect(board.board).to eql(board_matrix)
+    end
+  end 
 end
