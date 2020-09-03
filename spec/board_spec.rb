@@ -15,32 +15,40 @@ describe Board do
     [' ', ' ', ' ']
   ]}
 
-  describe '#wincheck' do
-    it 'returns if the player has completed a line' do
-      
-      expect(board.wincheck(1, col)).to eql(true)
-    end
-  end
-
-  describe '#check_coord' do
+  
+  context '#check_coord' do
     it 'returns true if coord is valid or unoccupied' do
       expect(board.check_coord(lin, col)).to eql(true)
     end
-
-    it 'returns flse if coord is invalid or occupied' do
+    
+    it 'returns false if coord is invalid or occupied' do
       expect(board.check_coord(w_lin, w_col)).to eql(false)
     end
   end
 
-  describe '#restart' do
+  context '#restart' do
     it 'returns an empty board' do
       expect(board.restart).to eql(board_matrix)
     end
   end
 
-  describe 'initialize' do
-    it 'returns @players and @board' do
+  context 'initialize' do
+    it 'returns board' do
       expect(board.board).to eql(board_matrix)
     end
+    it 'returns player info' do
+      expect(board.player1).to eql(player1)
+    end
   end 
+  context '#wincheck' do
+    it 'returns false if no icon match in a line' do
+      board.instance_variable_set('@board', [['x', 'o', 'x'], ['o', 'o', 'x'], ['x', 'x', 'o']])
+      expect(board.wincheck(1, col.to_i)).to eql(false)
+    end
+
+    it 'returns true if icons match in a line' do
+      board.instance_variable_set('@board', [['x', 'o', 'x'], ['o', 'o', 'x'], ['x', 'o', 'o']])
+      expect(board.wincheck(1, col.to_i)).to eql(true)
+    end
+  end
 end
